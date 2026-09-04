@@ -10,34 +10,27 @@ bool vis[maxn] = {};
 set<int> ke[maxn];
 vector<vector<int>> res;
 
-void DFS(int u)
-{
+void DFS(int u) {
     vis[u] = true;
-    for (int v : ke[u])
-    {
-        if (!vis[v])
-        {
+    for (int v : ke[u]) {
+        if (!vis[v]) {
             res.push_back({u, v});
             DFS(v);
         }
     }
 }
 
-void BFS()
-{
+void BFS() {
     for (bool &b : vis)
         b = false;
     queue<int> qe;
     qe.push(st);
     vis[st] = true;
-    while (!qe.empty())
-    {
+    while (!qe.empty()) {
         int u = qe.front();
         qe.pop();
-        for (int v : ke[u])
-        {
-            if (!vis[v])
-            {
+        for (int v : ke[u]) {
+            if (!vis[v]) {
                 res.push_back({u, v});
                 vis[v] = true;
                 qe.push(v);
@@ -46,8 +39,7 @@ void BFS()
     }
 }
 
-int main()
-{
+int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
@@ -56,8 +48,7 @@ int main()
     int k;
     cin >> k >> n >> E >> st;
 
-    for (int i = 1; i <= E; i++)
-    {
+    for (int i = 1; i <= E; i++) {
         int x, y;
         cin >> x >> y;
         a[x][y] = 1;
@@ -69,8 +60,7 @@ int main()
     else
         BFS();
 
-    if (res.size() == n - 1)
-    {
+    if (res.size() == n - 1) {
         cout << res.size() << endl;
         for (vector<int> v : res)
             cout << v[0] << " " << v[1] << endl;
