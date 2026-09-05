@@ -12,16 +12,12 @@ vector<bool> vis(maxn, false);
 
 int V, E, u;
 
-void Hamilton(int i)
-{
-    for (int j = 1; j <= V; j++)
-    {
-        if (!vis[j] && a[path[i - 1]][j])
-        {
+void Hamilton(int i) {
+    for (int j = 1; j <= V; j++) {
+        if (!vis[j] && a[path[i - 1]][j]) {
             vis[j] = true;
             path.push_back(j);
-            if (i == V + 1)
-            {
+            if (i == V + 1) {
                 if (path[1] == path[i])
                     res.push_back(path);
             }
@@ -34,8 +30,7 @@ void Hamilton(int i)
     }
 }
 
-int main()
-{
+int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
@@ -43,8 +38,7 @@ int main()
     // freopen("CT.out	", "w", stdout);
     cin >> V >> E >> u;
 
-    for (int i = 1; i <= E; i++)
-    {
+    for (int i = 1; i <= E; i++) {
         int x, y;
         cin >> x >> y;
         a[x][y] = 1;
@@ -56,11 +50,9 @@ int main()
 
     Hamilton(2);
 
-    if (res.size() > 0)
-    {
+    if (res.size() > 0) {
         cout << res.size() << endl;
-        for (auto v : res)
-        {
+        for (auto v : res) {
             for (int i = 1; i < v.size(); i++)
                 cout << v[i] << " ";
             cout << endl;
