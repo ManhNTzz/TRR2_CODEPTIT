@@ -4,8 +4,7 @@ using namespace std;
 
 // Cre by ManhNTzz
 
-int check(vector<int> cnt)
-{
+int check(vector<int> cnt) {
     int count = 0;
     for (int x : cnt)
         count += x & 1;
@@ -18,8 +17,7 @@ int check(vector<int> cnt)
 
 int cntDfs = 0;
 
-void DFS(vector<vector<int>> dske, int u, vector<bool> &vis)
-{
+void DFS(vector<vector<int>> dske, int u, vector<bool> &vis) {
     vis[u] = true;
     cntDfs++;
     for (int v : dske[u])
@@ -29,8 +27,7 @@ void DFS(vector<vector<int>> dske, int u, vector<bool> &vis)
     }
 }
 
-int checkEuler(vector<vector<int>> &dske, int &V, vector<int> &cnt)
-{
+int checkEuler(vector<vector<int>> &dske, int &V, vector<int> &cnt) {
     vector<bool> vis(maxn, false);
     DFS(dske, 1, vis);
     if (cntDfs < V)
@@ -39,31 +36,26 @@ int checkEuler(vector<vector<int>> &dske, int &V, vector<int> &cnt)
     return check(cnt);
 }
 
-void Euler(int u, vector<set<int>> dske, int V, int E, vector<int> &path)
-{
+void Euler(int u, vector<set<int>> dske, int V, int E, vector<int> &path) {
     stack<int> st;
     st.push(u);
 
-    while (!st.empty())
-    {
+    while (!st.empty()) {
         int v = st.top();
-        if (!dske[v].empty())
-        {
+        if (!dske[v].empty()) {
             int w = *dske[v].begin();
             st.push(w);
             dske[v].erase(w);
             dske[w].erase(v);
         }
-        else
-        {
+        else {
             path.push_back(v);
             st.pop();
         }
     }
 }
 
-int main()
-{
+int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
@@ -71,14 +63,12 @@ int main()
     // fstream cout("CT.out", ios::out);
     int k;
     cin >> k;
-    if (k == 1)
-    {
+    if (k == 1) {
         int V, E;
         cin >> V >> E;
         vector<vector<int>> dske(maxn);
         vector<int> cnt(maxn);
-        for (int i = 0; i < E; i++)
-        {
+        for (int i = 0; i < E; i++) {
             int x, y;
             cin >> x >> y;
             cnt[x]++;
@@ -88,14 +78,12 @@ int main()
         }
         cout << checkEuler(dske, V, cnt) << endl;
     }
-    else if (k == 2)
-    {
+    else if (k == 2) {
         int V, E, u;
         cin >> V >> E >> u;
         vector<set<int>> dske(maxn);
 
-        for (int i = 0; i < E; i++)
-        {
+        for (int i = 0; i < E; i++) {
             int x, y;
             cin >> x >> y;
             dske[x].insert(y);
