@@ -6,20 +6,16 @@ using namespace std;
 
 int cnt, sz;
 vector<vector<int>> a(maxn, vector<int>(maxn, 0));
-void BFS(vector<set<int>> &dske, int s, vector<bool> &vis)
-{
+void BFS(vector<set<int>> &dske, int s, vector<bool> &vis) {
     queue<int> qe;
     qe.push(s);
-    while (!qe.empty())
-    {
+    while (!qe.empty()) {
         int v = qe.front();
         qe.pop();
         vis[v] = true;
         cnt++;
-        for (int t : dske[v])
-        {
-            if (!vis[t])
-            {
+        for (int t : dske[v]) {
+            if (!vis[t]) {
                 vis[t] = true;
                 qe.push(t);
             }
@@ -27,28 +23,22 @@ void BFS(vector<set<int>> &dske, int s, vector<bool> &vis)
     }
 }
 
-int check_euler(int &V)
-{
+int check_euler(int &V) {
     vector<set<int>> dske(maxn);
     vector<int> in(maxn, 0), out(maxn, 0);
 
-    for (int i = 1; i <= V; i++)
-    {
+    for (int i = 1; i <= V; i++) {
         cin >> sz;
-        for (int j = 0; j < sz; j++)
-        {
+        for (int j = 0; j < sz; j++) {
             int x;
             cin >> x;
             a[i][x] = 1;
         }
     }
 
-    for (int i = 1; i <= V; i++)
-    {
-        for (int j = 1; j <= V; j++)
-        {
-            if (a[i][j])
-            {
+    for (int i = 1; i <= V; i++) {
+        for (int j = 1; j <= V; j++) {
+            if (a[i][j]) {
                 out[i]++;
                 in[j]++;
                 dske[i].insert(j);
@@ -64,8 +54,7 @@ int check_euler(int &V)
         return 0;
 
     int s = 0, t = 0;
-    for (int i = 1; i <= V; i++)
-    {
+    for (int i = 1; i <= V; i++) {
         if (in[i] == out[i])
             continue;
         else if (out[i] == in[i] + 1)
@@ -83,27 +72,22 @@ int check_euler(int &V)
     return 0;
 }
 
-void euler(int V)
-{
+void euler(int V) {
     int u;
     cin >> u;
     vector<set<int>> dske(maxn);
 
-    for (int i = 1; i <= V; i++)
-    {
+    for (int i = 1; i <= V; i++) {
         cin >> sz;
-        for (int j = 0; j < sz; j++)
-        {
+        for (int j = 0; j < sz; j++) {
             int x;
             cin >> x;
             a[i][x] = 1;
         }
     }
 
-    for (int i = 1; i <= V; i++)
-    {
-        for (int j = 1; j <= V; j++)
-        {
+    for (int i = 1; i <= V; i++) {
+        for (int j = 1; j <= V; j++) {
             if (a[i][j])
                 dske[i].insert(j);
         }
@@ -113,17 +97,14 @@ void euler(int V)
     st.push(u);
     vector<int> path;
 
-    while (!st.empty())
-    {
+    while (!st.empty()) {
         int v = st.top();
-        if (!dske[v].empty())
-        {
+        if (!dske[v].empty()) {
             int w = *dske[v].begin();
             st.push(w);
             dske[v].erase(w);
         }
-        else
-        {
+        else {
             path.push_back(v);
             st.pop();
         }
@@ -134,8 +115,7 @@ void euler(int V)
         cout << x << " ";
 }
 
-int main()
-{
+int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
