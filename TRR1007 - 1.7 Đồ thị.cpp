@@ -20,20 +20,17 @@ const int INF = 1e9;
 int bac[105] = {0};
 int t, n;
 int a[105][105] = {};
-int main()
-{
+int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
     ifstream cin("DT.INP");
     ofstream cout("DT.OUT");
     cin >> t >> n;
-    FOR(i, 1, n)
-    {
+    FOR(i, 1, n) {
         int x;
         cin >> x;
-        while (x--)
-        {
+        while (x--) {
             int j;
             cin >> j;
             bac[i]++;
@@ -43,11 +40,9 @@ int main()
     if (t == 1)
         FOR(i, 1, n)
     cout << bac[i] << " ";
-    else
-    {
+    else {
         cout << n << endl;
-        FOR(i, 1, n)
-        {
+        FOR(i, 1, n) {
             FOR(j, 1, n)
             cout << a[i][j] << " ";
             cout << endl;
