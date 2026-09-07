@@ -20,20 +20,17 @@ const int INF = 1e9;
 set<vector<int>> dsc;
 int t, n;
 int bac[105] = {0};
-int main()
-{
+int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
     ifstream cin("DT.INP");
     ofstream cout("DT.OUT");
     cin >> t >> n;
-    FOR(i, 1, n)
-    {
+    FOR(i, 1, n) {
         int x;
         cin >> x;
-        while (x--)
-        {
+        while (x--) {
             int j;
             cin >> j;
             bac[i]++;
@@ -43,11 +40,9 @@ int main()
     if (t == 1)
         FOR(i, 1, n)
     cout << bac[i] << " ";
-    else
-    {
+    else {
         cout << n << " " << dsc.size() << endl;
-        for (auto v : dsc)
-        {
+        for (auto v : dsc) {
             cout << v[0] << " " << v[1];
             cout << endl;
         }
