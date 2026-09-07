@@ -20,16 +20,14 @@ const int INF = 1e9;
 vector<pair<int, int>> mtlt;
 int t, n, m;
 int bac[105] = {0};
-int main()
-{
+int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
     ifstream cin("DT.INP");
     ofstream cout("DT.OUT");
     cin >> t >> n >> m;
-    REP(i, m)
-    {
+    REP(i, m) {
         int x, y;
         cin >> x >> y;
         bac[x]++;
@@ -39,13 +37,10 @@ int main()
     if (t == 1)
         FOR(i, 1, n)
     cout << bac[i] << " ";
-    else
-    {
+    else {
         cout << n << " " << mtlt.size() << endl;
-        FOR(i, 1, n)
-        {
-            for (auto v : mtlt)
-            {
+        FOR(i, 1, n) {
+            for (auto v : mtlt) {
                 if (v.fi == i || v.se == i)
                     cout << 1 << " ";
                 else
