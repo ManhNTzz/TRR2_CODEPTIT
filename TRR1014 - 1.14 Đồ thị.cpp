@@ -30,12 +30,10 @@ int main()
     ofstream cout("DT.OUT");
     cin >> t >> n;
     FOR(i, 1, n)
-    FOR(j, 1, n)
-    {
+    FOR(j, 1, n) {
         int x;
         cin >> x;
-        if (x)
-        {
+        if (x) {
             vao[j]++;
             ra[i]++;
             mtlt.pb({i, j});
@@ -44,13 +42,10 @@ int main()
     if (t == 1)
         FOR(i, 1, n)
     cout << vao[i] << " " << ra[i] << endl;
-    else
-    {
+    else {
         cout << n << " " << mtlt.size() << endl;
-        FOR(i, 1, n)
-        {
-            for (auto v : mtlt)
-            {
+        FOR(i, 1, n) {
+            for (auto v : mtlt) {
                 if (v.fi == i)
                     cout << 1 << " ";
                 else if (v.se == i)
