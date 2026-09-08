@@ -21,8 +21,7 @@ set<vector<int>> dsc;
 int t, n;
 int vao[105] = {0};
 int ra[105] = {0};
-int main()
-{
+int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
@@ -30,12 +29,10 @@ int main()
     ofstream cout("DT.OUT");
     cin >> t >> n;
     FOR(i, 1, n)
-    FOR(j, 1, n)
-    {
+    FOR(j, 1, n) {
         int x;
         cin >> x;
-        if (x)
-        {
+        if (x) {
             vao[j]++;
             ra[i]++;
             dsc.insert({i, j});
@@ -44,8 +41,7 @@ int main()
     if (t == 1)
         FOR(i, 1, n)
     cout << vao[i] << " " << ra[i] << endl;
-    else
-    {
+    else {
         cout << n << " " << dsc.size() << endl;
         for (auto v : dsc)
             cout << v[0] << " " << v[1] << endl;
