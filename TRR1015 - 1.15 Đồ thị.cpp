@@ -21,16 +21,14 @@ int a[105][105] = {};
 int vao[105] = {0};
 int ra[105] = {0};
 int t, n, m;
-int main()
-{
+int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
     ifstream cin("DT.INP");
     ofstream cout("DT.OUT");
     cin >> t >> n >> m;
-    REP(i, m)
-    {
+    REP(i, m) {
         int x, y;
         cin >> x >> y;
         vao[y]++;
@@ -40,11 +38,9 @@ int main()
     if (t == 1)
         FOR(i, 1, n)
     cout << vao[i] << " " << ra[i] << endl;
-    else
-    {
+    else {
         cout << n << endl;
-        FOR(i, 1, n)
-        {
+        FOR(i, 1, n) {
             FOR(j, 1, n)
             cout << a[i][j] << " ";
             cout << endl;
