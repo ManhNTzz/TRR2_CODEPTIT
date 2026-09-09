@@ -21,20 +21,17 @@ vector<pair<int, int>> mtlt;
 int vao[105] = {0};
 int ra[105] = {0};
 int t, n;
-int main()
-{
+int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
     ifstream cin("DT.INP");
     ofstream cout("DT.OUT");
     cin >> t >> n;
-    FOR(i, 1, n)
-    {
+    FOR(i, 1, n) {
         int x;
         cin >> x;
-        while (x--)
-        {
+        while (x--) {
             int j;
             cin >> j;
             vao[j]++;
@@ -45,13 +42,10 @@ int main()
     if (t == 1)
         FOR(i, 1, n)
     cout << vao[i] << " " << ra[i] << endl;
-    else
-    {
+    else {
         cout << n << " " << mtlt.size() << endl;
-        FOR(i, 1, n)
-        {
-            for (auto v : mtlt)
-            {
+        FOR(i, 1, n) {
+            for (auto v : mtlt) {
                 if (v.fi == i)
                     cout << 1 << " ";
                 else if (v.se == i)
