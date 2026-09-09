@@ -19,8 +19,7 @@ const long long mod = 1000000007;
 int mtk[105][105] = {};
 int vao[105] = {0};
 int ra[105] = {0};
-int main()
-{
+int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
@@ -28,12 +27,10 @@ int main()
     ofstream cout("DT.OUT");
     int t, n;
     cin >> t >> n;
-    FOR(i, 1, n)
-    {
+    FOR(i, 1, n) {
         int x;
         cin >> x;
-        while (x--)
-        {
+        while (x--) {
             int j;
             cin >> j;
             vao[j]++;
@@ -44,11 +41,9 @@ int main()
     if (t == 1)
         FOR(i, 1, n)
     cout << vao[i] << " " << ra[i] << endl;
-    else
-    {
+    else {
         cout << n << endl;
-        FOR(i, 1, n)
-        {
+        FOR(i, 1, n) {
             FOR(j, 1, n)
             cout << mtk[i][j] << " ";
             cout << endl;
