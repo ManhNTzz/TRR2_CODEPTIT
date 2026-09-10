@@ -29,8 +29,7 @@ int main()
     ifstream cin("DT.INP");
     ofstream cout("DT.OUT");
     cin >> t >> n >> m;
-    REP(i, m)
-    {
+    REP(i, m) {
         int x, y, z;
         cin >> x >> y >> z;
         vao[y]++;
@@ -40,13 +39,10 @@ int main()
     if (t == 1)
         FOR(i, 1, n)
     cout << vao[i] << " " << ra[i] << endl;
-    else
-    {
+    else {
         cout << n << endl;
-        FOR(i, 1, n)
-        {
-            FOR(j, 1, n)
-            {
+        FOR(i, 1, n) {
+            FOR(j, 1, n) {
                 if (i == j)
                     cout << 0 << " ";
                 else
