@@ -21,20 +21,16 @@ int a[105][105];
 int n, u, v;
 bool vs[105];
 int truoc[105];
-void DFS(int u)
-{
+void DFS(int u) {
     vs[u] = true;
-    FOR(i, 1, n)
-    {
-        if (!vs[i] && a[u][i])
-        {
+    FOR(i, 1, n) {
+        if (!vs[i] && a[u][i]) {
             truoc[i] = u;
             DFS(i);
         }
     }
 }
-int main()
-{
+int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
@@ -47,28 +43,23 @@ int main()
     FOR(j, 1, n)
         cin >> a[i][j];
     memset(vs, false, sizeof(vs));
-    if (t == 1)
-    {
+    if (t == 1) {
         int dem = 0;
-        FOR(i, 1, n)
-        {
+        FOR(i, 1, n) {
             if (a[u][i] && a[i][v])
                 dem++;
         }
         cout << dem;
     }
-    else
-    {
+    else {
         DFS(u);
-        if (!vs[v])
-        {
+        if (!vs[v]) {
             cout << 0;
             return 0;
         }
         vector<int> res;
         int curr = v;
-        while (1)
-        {
+        while (1) {
             res.pb(curr);
             if (curr == u)
                 break;
