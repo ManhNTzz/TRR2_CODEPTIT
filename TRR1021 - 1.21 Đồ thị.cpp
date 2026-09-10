@@ -22,22 +22,18 @@ int vao[105] = {0};
 int ra[105] = {0};
 int a[105][105] = {};
 int t, n;
-int main()
-{
+int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
     ifstream cin("DT.INP");
     ofstream cout("DT.OUT");
     cin >> t >> n;
-    FOR(i, 1, n)
-    {
-        FOR(j, 1, n)
-        {
+    FOR(i, 1, n) {
+        FOR(j, 1, n) {
             int x;
             cin >> x;
-            if (x > 0 && x <= 50)
-            {
+            if (x > 0 && x <= 50) {
                 vao[j]++;
                 ra[i]++;
                 a[i][j] = x;
@@ -48,8 +44,7 @@ int main()
     if (t == 1)
         FOR(i, 1, n)
     cout << vao[i] << " " << ra[i] << endl;
-    else
-    {
+    else {
         cout << n << " " << dsc.size() << endl;
         for (auto v : dsc)
             cout << v[0] << " " << v[1] << " " << a[v[0]][v[1]] << endl;
