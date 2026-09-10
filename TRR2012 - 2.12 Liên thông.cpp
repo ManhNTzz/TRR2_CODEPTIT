@@ -22,28 +22,23 @@ vector<set<int>> res;
 int a[105][105];
 int n;
 bool vs[105];
-void BFS(int u)
-{
+void BFS(int u) {
     vs[u] = true;
     queue<int> qe;
     qe.push(u);
-    while (!qe.empty())
-    {
+    while (!qe.empty()) {
         int x = qe.front();
         qe.pop();
         path.insert(x);
-        FOR(i, 1, n)
-        {
-            if (!vs[i] && a[x][i])
-            {
+        FOR(i, 1, n) {
+            if (!vs[i] && a[x][i]) {
                 qe.push(i);
                 vs[i] = true;
             }
         }
     }
 }
-int main()
-{
+int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
@@ -54,8 +49,7 @@ int main()
     FOR(j, 1, n)
         cin >> a[i][j];
     memset(vs, false, sizeof(vs));
-    FOR(i, 1, n)
-    {
+    FOR(i, 1, n) {
         if (vs[i])
             continue;
         BFS(i);
@@ -63,8 +57,7 @@ int main()
         path.clear();
     }
     cout << res.size() << endl;
-    for (auto x : res)
-    {
+    for (auto x : res) {
         for (auto v : x)
             cout << v << " ";
         cout << endl;
