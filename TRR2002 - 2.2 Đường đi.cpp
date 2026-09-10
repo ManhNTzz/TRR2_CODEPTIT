@@ -21,19 +21,15 @@ int a[105][105];
 int truoc[105];
 int n, u, v;
 bool vs[105];
-void BFS(int u)
-{
+void BFS(int u) {
     vs[u] = true;
     queue<int> qe;
     qe.push(u);
-    while (!qe.empty())
-    {
+    while (!qe.empty()) {
         int x = qe.front();
         qe.pop();
-        FOR(i, 1, n)
-        {
-            if (!vs[i] && a[x][i])
-            {
+        FOR(i, 1, n) {
+            if (!vs[i] && a[x][i]) {
                 truoc[i] = x;
                 qe.push(i);
                 vs[i] = true;
@@ -41,8 +37,7 @@ void BFS(int u)
         }
     }
 }
-int main()
-{
+int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
@@ -55,23 +50,19 @@ int main()
     FOR(j, 1, n)
         cin >> a[i][j];
     memset(vs, false, sizeof(vs));
-    if (t == 1)
-    {
+    if (t == 1) {
         int dem = 0;
-        FOR(i, 1, n)
-        {
+        FOR(i, 1, n) {
             if (a[u][i] && a[i][v])
                 dem++;
         }
         cout << dem;
     }
-    else
-    {
+    else {
         BFS(u);
         vector<int> res;
         int curr = v;
-        while (1)
-        {
+        while (1) {
             res.pb(curr);
             if (curr == u)
                 break;
