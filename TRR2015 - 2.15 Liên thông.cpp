@@ -20,26 +20,21 @@ const int INF = 1e9;
 int a[105][105];
 int n;
 bool vs[105];
-void DFS(int u)
-{
+void DFS(int u) {
     vs[u] = true;
-    FOR(i, 1, n)
-    {
+    FOR(i, 1, n) {
         if (!vs[i] && a[u][i])
             DFS(i);
     }
 }
-void checklt(int u)
-{
+void checklt(int u) {
     vs[u] = true;
-    FOR(i, 1, n)
-    {
+    FOR(i, 1, n) {
         if (!vs[i] && (a[u][i] || a[i][u]))
             checklt(i);
     }
 }
-int main()
-{
+int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
@@ -50,32 +45,25 @@ int main()
     FOR(j, 1, n)
         cin >> a[i][j];
     int ok = 0;
-    FOR(u, 1, n)
-    {
+    FOR(u, 1, n) {
         memset(vs, false, sizeof(vs));
         DFS(u);
-        FOR(v, 1, n)
-        {
-            if (!vs[v])
-            {
+        FOR(v, 1, n) {
+            if (!vs[v]) {
                 ok = 1;
                 break;
             }
         }
     }
-    if (!ok)
-    {
+    if (!ok) {
         cout << 1;
     }
-    else
-    {
+    else {
         memset(vs, false, sizeof(vs));
         int check = 0;
         checklt(1);
-        FOR(i, 1, n)
-        {
-            if (!vs[i])
-            {
+        FOR(i, 1, n) {
+            if (!vs[i]) {
                 check = 1;
                 break;
             }
