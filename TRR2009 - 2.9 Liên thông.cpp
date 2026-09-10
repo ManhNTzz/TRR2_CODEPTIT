@@ -22,20 +22,16 @@ vector<set<int>> res;
 int a[105][105];
 int n;
 bool vs[105];
-void DFS(int u)
-{
+void DFS(int u) {
     vs[u] = true;
     path.insert(u);
-    FOR(i, 1, n)
-    {
-        if (!vs[i] && a[u][i])
-        {
+    FOR(i, 1, n) {
+        if (!vs[i] && a[u][i]) {
             DFS(i);
         }
     }
 }
-int main()
-{
+int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
@@ -46,8 +42,7 @@ int main()
     FOR(j, 1, n)
         cin >> a[i][j];
     memset(vs, false, sizeof(vs));
-    FOR(i, 1, n)
-    {
+    FOR(i, 1, n) {
         if (vs[i])
             continue;
         DFS(i);
@@ -55,8 +50,7 @@ int main()
         path.clear();
     }
     cout << res.size() << endl;
-    for (auto x : res)
-    {
+    for (auto x : res) {
         for (auto v : x)
             cout << v << " ";
         cout << endl;
