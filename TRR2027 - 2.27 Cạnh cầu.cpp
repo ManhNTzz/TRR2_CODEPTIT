@@ -21,20 +21,16 @@ int a[105][105];
 int n;
 bool vs[105];
 set<vector<int>> res;
-void DFS(int u)
-{
+void DFS(int u) {
     vs[u] = true;
-    FOR(i, 1, n)
-    {
+    FOR(i, 1, n) {
         if (!vs[i] && a[u][i])
             DFS(i);
     }
 }
-int demtplt()
-{
+int demtplt() {
     int cnt = 0;
-    FOR(i, 1, n)
-    {
+    FOR(i, 1, n) {
         if (vs[i])
             continue;
         DFS(i);
@@ -42,8 +38,7 @@ int demtplt()
     }
     return cnt;
 }
-int main()
-{
+int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
@@ -56,10 +51,8 @@ int main()
     memset(vs, false, sizeof(vs));
     int dem = demtplt();
     FOR(i, 1, n)
-    FOR(j, 1, n)
-    {
-        if (a[i][j] && j >= i + 1)
-        {
+    FOR(j, 1, n) {
+        if (a[i][j] && j >= i + 1) {
             memset(vs, false, sizeof(vs));
             a[i][j] = a[j][i] = 0;
             if (dem < demtplt())
