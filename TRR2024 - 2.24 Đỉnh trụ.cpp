@@ -21,19 +21,15 @@ set<int> res;
 int a[105][105];
 bool vs[105];
 int n;
-void BFS(int u)
-{
+void BFS(int u) {
     vs[u] = true;
     queue<int> qe;
     qe.push(u);
-    while (!qe.empty())
-    {
+    while (!qe.empty()) {
         int x = qe.front();
         qe.pop();
-        FOR(i, 1, n)
-        {
-            if (!vs[i] && a[x][i])
-            {
+        FOR(i, 1, n) {
+            if (!vs[i] && a[x][i]) {
                 qe.push(i);
                 vs[i] = true;
             }
@@ -52,8 +48,7 @@ int demtplt()
     }
     return cnt;
 }
-int main()
-{
+int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
@@ -65,8 +60,7 @@ int main()
         cin >> a[i][j];
     memset(vs, false, sizeof(vs));
     int dem = demtplt();
-    FOR(i, 1, n)
-    {
+    FOR(i, 1, n) {
         memset(vs, false, sizeof(vs));
         vs[i] = true;
         if (dem < demtplt())
