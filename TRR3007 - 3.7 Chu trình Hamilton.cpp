@@ -21,18 +21,13 @@ int n, u;
 bool vs[105];
 int a[105][105], path[105];
 int cnt = 0;
-void Hamilton(int i)
-{
-    FOR(j, 1, n)
-    {
-        if (a[path[i - 1]][j] && !vs[j])
-        {
+void Hamilton(int i) {
+    FOR(j, 1, n) {
+        if (a[path[i - 1]][j] && !vs[j]) {
             vs[j] = true;
             path[i] = j;
-            if (i == n)
-            {
-                if (a[j][u])
-                {
+            if (i == n) {
+                if (a[j][u]) {
                     FOR(i, 1, n)
                     cout << path[i] << " ";
                     cout << u << endl;
@@ -45,8 +40,7 @@ void Hamilton(int i)
         }
     }
 }
-int main()
-{
+int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
