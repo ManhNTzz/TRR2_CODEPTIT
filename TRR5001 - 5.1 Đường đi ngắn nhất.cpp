@@ -19,8 +19,7 @@ const int INF = 1e9;
 
 int a[105][105], d[105], truoc[105];
 int n, s, t;
-int main()
-{
+int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
@@ -30,24 +29,18 @@ int main()
     FOR(i, 1, n)
     FOR(j, 1, n)
         cin >> a[i][j];
-    FOR(i, 1, n)
-    {
+    FOR(i, 1, n) {
         d[i] = 10000;
         truoc[i] = 0;
     }
     d[s] = 0;
     int k = 0;
-    while (k <= n - 1)
-    {
+    while (k <= n - 1) {
         int ok = 0;
-        FOR(i, 1, n)
-        {
-            FOR(j, 1, n)
-            {
-                if (d[j] != 10000 && a[j][i] != 0 && a[j][i] != 10000)
-                {
-                    if (d[i] > d[j] + a[j][i])
-                    {
+        FOR(i, 1, n) {
+            FOR(j, 1, n) {
+                if (d[j] != 10000 && a[j][i] != 0 && a[j][i] != 10000) {
+                    if (d[i] > d[j] + a[j][i]) {
                         d[i] = d[j] + a[j][i];
                         truoc[i] = j;
                         ok = 1;
@@ -61,10 +54,8 @@ int main()
     }
     int checkchutrinham = 0;
     FOR(i, 1, n)
-    FOR(j, 1, n)
-    {
-        if (d[i] > d[j] + a[j][i])
-        {
+    FOR(j, 1, n) {
+        if (d[i] > d[j] + a[j][i]) {
             checkchutrinham = 1;
             break;
         }
@@ -73,13 +64,11 @@ int main()
         cout << -1;
     else if (d[t] == 10000)
         cout << 0;
-    else
-    {
+    else {
         cout << d[t] << endl;
         vector<int> res;
         int curr = t;
-        while (1)
-        {
+        while (1) {
             res.pb(curr);
             if (curr == s)
                 break;
