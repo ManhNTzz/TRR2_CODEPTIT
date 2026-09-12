@@ -17,8 +17,7 @@ const int INF = 1e9;
 
 // Cre by ManhNTzz
 
-struct Edge
-{
+struct Edge {
     int u, v, w;
 };
 int n, m;
@@ -26,33 +25,28 @@ vector<Edge> T;
 vector<Edge> res;
 int WT = 0;
 int parent[105];
-int Find(int v)
-{
+int Find(int v) {
     if (v == parent[v])
         return v;
     return parent[v] = Find(parent[v]);
 }
-bool Union(int u, int v)
-{
+bool Union(int u, int v) {
     u = Find(u);
     v = Find(v);
-    if (u != v)
-    {
+    if (u != v) {
         parent[v] = u;
         return true;
     }
     return false;
 }
-bool cmp(Edge a, Edge b)
-{
+bool cmp(Edge a, Edge b) {
     if (a.w == b.w && a.u == b.u)
         return a.v < b.v;
     else if (a.w == b.w)
         return a.u < b.u;
     return a.w < b.w;
 }
-int main()
-{
+int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
@@ -65,18 +59,15 @@ int main()
     sort(ALL(T), cmp);
     FOR(i, 1, n)
     parent[i] = i;
-    REP(i, m)
-    {
-        if (Union(T[i].u, T[i].v))
-        {
+    REP(i, m) {
+        if (Union(T[i].u, T[i].v)) {
             res.pb(T[i]);
             WT += T[i].w;
             if (res.size() == n - 1)
                 break;
         }
     }
-    if (res.size() == n - 1)
-    {
+    if (res.size() == n - 1) {
         cout << WT << endl;
         for (auto e : res)
             cout << e.u << " " << e.v << " " << e.w << endl;
