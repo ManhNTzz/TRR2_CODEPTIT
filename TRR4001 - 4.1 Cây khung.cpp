@@ -21,31 +21,24 @@ int a[105][105];
 bool vs[105];
 vector<pair<int, int>> res;
 int n, s;
-void DFS(int u)
-{
+void DFS(int u) {
     vs[u] = true;
-    FOR(i, 1, n)
-    {
-        if (!vs[i] && a[u][i])
-        {
+    FOR(i, 1, n) {
+        if (!vs[i] && a[u][i]) {
             res.pb({u, i});
             DFS(i);
         }
     }
 }
-void BFS(int u)
-{
+void BFS(int u) {
     vs[u] = true;
     queue<int> qe;
     qe.push(u);
-    while (!qe.empty())
-    {
+    while (!qe.empty()) {
         int x = qe.front();
         qe.pop();
-        FOR(i, 1, n)
-        {
-            if (!vs[i] && a[x][i])
-            {
+        FOR(i, 1, n) {
+            if (!vs[i] && a[x][i]) {
                 res.pb({x, i});
                 qe.push(i);
                 vs[i] = true;
@@ -53,8 +46,7 @@ void BFS(int u)
         }
     }
 }
-int main()
-{
+int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
@@ -70,8 +62,7 @@ int main()
         DFS(s);
     else
         BFS(s);
-    if (res.size() == n - 1)
-    {
+    if (res.size() == n - 1) {
         cout << res.size() << endl;
         for (auto v : res)
             cout << min(v.fi, v.se) << " " << max(v.fi, v.se) << endl;
