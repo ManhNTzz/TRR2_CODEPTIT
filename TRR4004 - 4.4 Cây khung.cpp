@@ -19,30 +19,22 @@ const int INF = 1e9;
 
 int n, s;
 int a[105][105];
-struct Edge
-{
+struct Edge {
     int u, v, w;
 };
 int WT = 0;
 vector<Edge> res;
 bool vs[105];
-void Prim(int s)
-{
+void Prim(int s) {
     vs[s] = true;
     int ok = 0;
-    FOR(i, 1, n - 1)
-    {
+    FOR(i, 1, n - 1) {
         int min_u = -1, min_v = -1, min_w = 10000;
-        FOR(u, 1, n)
-        {
-            if (vs[u])
-            {
-                FOR(v, 1, n)
-                {
-                    if (!vs[v])
-                    {
-                        if (a[u][v] != 0 && a[u][v] < min_w)
-                        {
+        FOR(u, 1, n) {
+            if (vs[u]) {
+                FOR(v, 1, n) {
+                    if (!vs[v]) {
+                        if (a[u][v] != 0 && a[u][v] < min_w) {
                             min_w = a[u][v];
                             min_u = u;
                             min_v = v;
@@ -52,8 +44,7 @@ void Prim(int s)
                 }
             }
         }
-        if (min_u != -1)
-        {
+        if (min_u != -1) {
             WT += min_w;
             res.pb({min(min_u, min_v), max(min_u, min_v), min_w});
             vs[min_v] = true;
@@ -61,15 +52,13 @@ void Prim(int s)
     }
     if (!ok)
         cout << 0;
-    else
-    {
+    else {
         cout << WT << endl;
         for (auto e : res)
             cout << e.u << " " << e.v << " " << e.w << endl;
     }
 }
-int main()
-{
+int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
